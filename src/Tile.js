@@ -10,6 +10,7 @@ class Tile extends Component {
     this.state = {
       flipped: props.flipped,
       pendingAnimationId: 0,
+      prevFlippedProp: props.flipped,
     };
   }
 
@@ -30,18 +31,23 @@ class Tile extends Component {
     );
   }
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.flipped !== prevState.prevFlippedProp) {
+      return {
+        flipped: nextProps.flipped,
+        prevFlippedProp: nextProps.flipped,
+        pendingAnimationId: 0,
+      };
+    }
+    return null;
+  }
+
   componentDidUpdate(prevProps, prevState) {
     if (prevState.flipped !== this.state.flipped) {
       this.props.onFlip(this.props.id, this.state.flipped);
     }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.flipped !== this.props.flipped) {
+    if (prevProps.flipped !== this.props.flipped && this.props.flipped !== prevState.flipped) {
       this._cancelAnimation();
-      this.setState({
-        flipped: nextProps.flipped,
-      });
     }
   }
 
