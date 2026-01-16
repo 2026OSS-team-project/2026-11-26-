@@ -10,7 +10,6 @@ class GameStats extends Component {
   render() {
     return (
       <div className="GameStats">
-        <span>Moves: {this.props.moves}</span>
         {this._renderGameState()}
       </div>
     );
@@ -24,7 +23,7 @@ class GameStats extends Component {
     if (this.props.gameState === GAME_WON) {
       return (
         <div className="GameStats-Wrapper">
-          <span className="GameStats-Message">Congrats!</span>
+          <span className="GameStats-Message">Congrats! You completed the puzzle in {this.props.moves} moves!</span>
           <RestartButton onClick={this.props.onRestart} />
         </div>
       );

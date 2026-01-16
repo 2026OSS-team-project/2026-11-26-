@@ -12,7 +12,7 @@ class TileGrid extends Component {
         {this.props.tiles.map((tile, i) => {
           return (
             <Tile
-              key={`Tile-${i}`}
+              key={`Tile-${this.props.gameId}-${i}`}
               onClick={this.props.onClick.bind(this, tile)}
               onFlip={this.props.onFlip}
               {...tile}
@@ -32,6 +32,7 @@ TileGrid.propTypes = {
       logo: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  gameId: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired,
   onFlip: PropTypes.func.isRequired,
 };

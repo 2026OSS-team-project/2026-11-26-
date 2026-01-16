@@ -16,14 +16,22 @@ class App extends Component {
     this.onTileClick = this.onTileClick.bind(this);
     this.onTileFlip = this.onTileFlip.bind(this);
     this.onRestartGame = this.onRestartGame.bind(this);
+    this.onNewGame = this.onNewGame.bind(this);
 
-    this.state = tileFactory.newGame();
+    this.state = {
+      ...tileFactory.newGame(),
+      gameId: 0,
+    };
   }
 
   render() {
     return (
       <div className="App">
-        <AppHeader />
+        <AppHeader
+          moves={this.state.moves}
+          onNewGame={this.onNewGame}
+          onRestart={this.onRestartGame}
+        />
         <div className="App-content">
           <GameStats
             moves={this.state.moves}
@@ -32,6 +40,7 @@ class App extends Component {
           />
           <TileGrid
             tiles={this.state.tiles}
+            gameId={this.state.gameId}
             onClick={this.onTileClick}
             onFlip={this.onTileFlip}
           />
@@ -90,7 +99,24 @@ class App extends Component {
   }
 
   onRestartGame() {
-    this.setState(tileFactory.newGame());
+    // Reset moves but keep the same tiles in their original shuffled order
+    this.setState(prevState => ({
+      moves: 0,
+      gameState: GAME_STARTED,
+      temporaryFlippedTiles: {},
+      tiles: prevState.tiles.map(tile => ({
+        ...tile,
+        flipped: false,
+      })),
+    }));
+  }
+
+  onNewGame() {
+    // Generate completely new game with new tiles
+    this.setState(prevState => ({
+      ...tileFactory.newGame(),
+      gameId: prevState.gameId + 1,
+    }));
   }
 
   _getMatchingTile(tile) {

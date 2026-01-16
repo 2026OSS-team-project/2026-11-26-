@@ -1,21 +1,23 @@
 .GameStats {
-  width: 511px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
-}
-
-@media all and (max-width: 420px) {
-  .GameStats {
-    width: 250px;
-  }
+  margin-bottom: 24px;
+  text-align: center;
 }
 
 .GameStats-Wrapper {
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .GameStats-Message {
-  line-height: 1.5em;
-  margin-right: 8px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
 }

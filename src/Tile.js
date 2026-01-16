@@ -11,17 +11,31 @@ class Tile extends Component {
       flipped: props.flipped,
       pendingAnimationId: 0,
       prevFlippedProp: props.flipped,
+      initialized: false,
     };
   }
 
+  componentDidMount() {
+    // Enable animations after initial render
+    requestAnimationFrame(() => {
+      this.setState({ initialized: true });
+    });
+  }
+
   render() {
-    const classes = `Tile-card ${this.state.flipped ? 'flipped' : ''}`;
+    const classes = [
+      'Tile-card',
+      this.state.flipped ? 'flipped' : '',
+      !this.state.initialized ? 'no-transition' : '',
+    ].filter(Boolean).join(' ');
 
     return (
       <section className="Tile-container" onClick={this._flipCard.bind(this)}>
         <div className={classes}>
           <figure className="front">
-            <div style={this._getCardStyles()} />
+            <div className="front-content">
+              <span className="question-mark">?</span>
+            </div>
           </figure>
           <figure className="back">
             <div style={this._getCardStyles(this.props.logo)} />
@@ -110,9 +124,9 @@ class Tile extends Component {
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center center',
       backgroundOrigin: 'border-box',
-      backgroundSize: 40,
-      width: 50,
-      height: 50,
+      backgroundSize: 48,
+      width: '100%',
+      height: '100%',
     };
   }
 }

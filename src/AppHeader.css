@@ -1,20 +1,77 @@
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 10vh;
-}
-
 .App-header {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  flex: .1 1 10%;
-  background-color: #222;
-  padding: 8px;
-  color: #fff;
+  background-color: #fff;
+  padding: 12px 24px;
+  border-bottom: 3px solid #4CAF50;
+  flex-shrink: 0;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.App-header-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.App-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 8px 12px;
+  transition: color 0.2s;
+}
+
+.header-btn:hover {
+  color: #333;
+}
+
+.header-btn:focus {
+  outline: none;
+}
+
+.btn-icon {
+  font-size: 14px;
+}
+
+.header-stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #555;
+  font-size: 12px;
+}
+
+.stat-icon {
+  font-size: 14px;
+}
+
+.stat-value {
+  font-weight: 600;
+  margin-left: 2px;
+}
+
+@media all and (max-width: 600px) {
+  .App-header {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .App-header-controls {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }

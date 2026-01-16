@@ -1,23 +1,13 @@
 .TileGrid {
-  display: flex;
-  flex-wrap: wrap;
-  width: 511px;
-  min-height: 154px;
-}
-
-.TileGrid > .Tile-container .Tile-card {
-  border-top: 1px solid #999;
-  border-left: 1px solid #999;
-}
-
-.TileGrid > .Tile-container .Tile-card:last-child {
-  border-bottom: 1px solid #999;
-  border-right: 1px solid #999;
+  display: grid;
+  grid-template-columns: repeat(5, 60px);
+  gap: 4px;
+  padding: 8px;
+  background-color: transparent;
 }
 
 @media all and (max-width: 420px) {
   .TileGrid {
-    width: 250px;
-    min-height: 309px;
+    grid-template-columns: repeat(4, 60px);
   }
 }
