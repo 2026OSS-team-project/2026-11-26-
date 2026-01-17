@@ -1,13 +1,42 @@
 .TileGrid {
   display: grid;
-  grid-template-columns: repeat(5, 60px);
-  gap: 4px;
-  padding: 8px;
+  grid-template-columns: repeat(3, minmax(70px, 90px));
+  gap: 8px;
+  padding: 12px;
   background-color: transparent;
+  max-width: 100%;
+  justify-content: center;
 }
 
-@media all and (max-width: 420px) {
+/* Small phones (360px+) */
+@media (min-width: 360px) {
   .TileGrid {
-    grid-template-columns: repeat(4, 60px);
+    grid-template-columns: repeat(4, minmax(70px, 85px));
+    gap: 10px;
+  }
+}
+
+/* Large phones / small tablets (480px+) */
+@media (min-width: 480px) {
+  .TileGrid {
+    grid-template-columns: repeat(5, minmax(75px, 90px));
+    gap: 12px;
+  }
+}
+
+/* Tablets (768px+) */
+@media (min-width: 768px) {
+  .TileGrid {
+    grid-template-columns: repeat(6, 80px);
+    gap: 12px;
+    padding: 16px;
+  }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+  .TileGrid {
+    grid-template-columns: repeat(6, 90px);
+    gap: 16px;
   }
 }

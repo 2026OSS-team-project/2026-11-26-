@@ -1,7 +1,7 @@
 .GameStats {
   display: flex;
   flex-direction: column;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   text-align: center;
 }
 
@@ -9,15 +9,28 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
-  padding: 24px;
+  gap: 12px;
+  padding: 16px 20px;
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .GameStats-Message {
-  font-size: 18px;
+  font-size: clamp(16px, 4.5vw, 20px);
   font-weight: 500;
   color: #333;
+  line-height: 1.4;
+}
+
+/* Tablets and up */
+@media (min-width: 768px) {
+  .GameStats {
+    margin-bottom: 24px;
+  }
+
+  .GameStats-Wrapper {
+    gap: 16px;
+    padding: 24px 32px;
+  }
 }
